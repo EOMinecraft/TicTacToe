@@ -12,7 +12,7 @@ public:
     void setTurn(bool);
     bool getTurn();
     char getSymbol();
-    virtual bool turn(int[], TicTacToe*) {};
+    virtual bool turn(int[], TicTacToe*) { return false; };
 };
 
 
