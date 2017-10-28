@@ -20,18 +20,17 @@ bool Computer::turn(int[], TicTacToe* game) {
     if (game->winCheck() || !game->isLive())
         return false;
 
-    
+    // player symbol
     const char playerSymbol = game->playerOne_->getSymbol();
-
-    // TODO: computer needs to check for diagonals
 
     // declare variables to be passed by refrence
     // variables will change if player can win is true
     int row, col;
+    // check if computer can win and end the game
     if (playerCanWin(symbol_, row, col, game)) {
         game->updateBoard(row, col, symbol_);
         return true;
-    }
+    } // check if player can win and prevent the win
     else if (playerCanWin(playerSymbol, row, col, game)) {
         game->updateBoard(row, col, symbol_);
         return true;

@@ -23,8 +23,9 @@ bool TicTacToeCell::getActive() {
 }
 
 bool TicTacToeCell::compare(TicTacToeCell cell) {
-    if(value_ == cell.getValue() && !getActive()) {
-        return true;
+    if (value_ == cell.getValue()) {
+        return !getActive();
+    } else {
+        return false;
     }
-    return false;
 }

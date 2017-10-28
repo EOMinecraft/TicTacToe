@@ -1,21 +1,27 @@
 #include "ticTacToe.h"
 
 
-
+// constructor
 TicTacToe::TicTacToe(int numOfPlayers) {
+    // set defaults
     live_ = true;
     turnCount_ = 0;
     invalidChoice_ = false;
 
+    // keep track of number of players
     numberOfPlayers_ = numOfPlayers;
 
+    // create the number of players that are in the game
     createPlayers(numOfPlayers);
 
+    // create tictactoe board
     createBoard();
 
 }
 
+// destructor
 TicTacToe::~TicTacToe() {
+    // delete stuff
     deleteBoard();
     deletePlayers();
 }
@@ -44,6 +50,7 @@ void TicTacToe::deletePlayers() {
     delete playerTwo_;
 }
 
+// create 3x3 board
 void TicTacToe::createBoard() {
     for(int i = 0; i < 3; i++) {
         for(int p = 0; p < 3; p++) {
@@ -68,11 +75,13 @@ bool TicTacToe::updateBoard(int row, int col, char symb) {
         int temp[] = { row, col };
         // remove item at index temp is contained
         remainingNumbers_.remove(temp);
+        // invalid choice is set to false
         invalidChoice_ = false;
         // change turns
         next();
         return true;
     }
+    // if failure to update board set invalidchoice to true
     invalidChoice_ = true;
     return false;
 }
@@ -111,7 +120,6 @@ bool TicTacToe::winCheck() {
     }
     */
     // horizontal
-    // horizontal
     for (int i = 0; i < 3; i++) {
         if (board_[i][0]->getValue() == board_[i][1]->getValue() && board_[i][0]->getValue() == board_[i][2]->getValue() && !board_[i][0]->getActive() && !board_[i][1]->getActive() && !board_[i][2]->getActive()) {
             setWinner(board_[i][0]->getValue());
@@ -140,6 +148,7 @@ bool TicTacToe::winCheck() {
         return true;
     }
 
+    // if turncount is greater than 9
     if (turnCount_ == 9) {
         winner_ = TIE;
         live_ = false;

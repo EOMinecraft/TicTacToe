@@ -453,7 +453,7 @@ void Menu::start() {
     againMenu(mode, event, hstdin);
 
     /*
-     * Restarts the game
+     * Restarts the game recursively
      * This will trigger until the user quits the game
      */
     start();
